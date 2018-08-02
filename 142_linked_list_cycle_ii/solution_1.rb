@@ -1,5 +1,10 @@
-require 'byebug'
 #Can you solve it without using extra space?
+
+#下面的思路中的快慢两个指针是参考了网上的解法，具体实现和如何定位cycle开始是我自己想出来的
+#标记便利过的node非常简单，不用extra space虽然我也知道肯定要用两个指针，但是没有想到一快一慢这一brilliant的idea
+#为什么没有想到呢？还是因为思考的时候只是从过去的经验找方案，并没有真的去想
+#
+
 #用两个指针，一个走得快，一个走得慢，如果两个指针相遇了，就说明存在cycle，并且相遇的node是在cycle中。
 #下一步就是定位cycle开始的node：
 #1. 上一步定位的node位于cycle中，从head开始重新遍历找到它的前一个node
@@ -57,22 +62,26 @@ def detect_list_cycle(head)
   end
 end
 
-root = nil
-current = nil
-tail = nil
-(1..2).each do |n|
-  if !root
-    root = ListNode.new(n)
-    current = root
-  else
-    current.next = ListNode.new(n)
-    current = current.next
-  end
+root = ListNode.new(1)
+root.next = ListNode.new(2)
+root.next.next = root
 
-  if n == 2
-    tail = current
-  end
-end
-tail.next = root
+# root = nil
+# current = nil
+# tail = nil
+# (1..2).each do |n|
+#   if !root
+#     root = ListNode.new(n)
+#     current = root
+#   else
+#     current.next = ListNode.new(n)
+#     current = current.next
+#   end
+#
+#   if n == 2
+#     tail = current
+#   end
+# end
+# tail.next = root
 
 p detect_list_cycle(root).val

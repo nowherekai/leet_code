@@ -45,6 +45,7 @@ public class Solution_1 {
     ListNode from_head = null;
 
     while (true) {
+
       from_head = head;
       if(from_head == node_in_cycle) {
         return from_head;
@@ -59,7 +60,7 @@ public class Solution_1 {
 
       if(from_head == node_in_cycle){
         node_in_cycle = from_head;
-      } {
+      } else {
         return from_head.next;
       }
     }
