@@ -9,6 +9,7 @@
 #下一步就是定位cycle开始的node：
 #1. 上一步定位的node位于cycle中，从head开始重新遍历找到它的前一个node
 #2. 判断前一个node是否在cycle中，如果是，重复1，如果不是就说明找到了cycle开始的node
+#NOTE 空间复杂度O(1), 时间复杂度O(n ** 2)
 class ListNode
   attr_accessor :val, :next
   def initialize(val)
