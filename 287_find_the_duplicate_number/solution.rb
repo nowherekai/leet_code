@@ -1,17 +1,24 @@
+# 暴力法 O(n ** 2)
+# 排序法 O( n * lg(n) )，moidify 数组
+# hash标记访问过的数据，O(n) 时间，O(n) 空间
+# 本文解法：转换为单链表，然后用监测单链表是否有循环的算法求解
+# TODO finish
 # @param {Integer[]} nums
 # @return {Integer}
 def find_duplicate(nums)
-  i = 0
-  while i < nums.size
-    j = i + 1
-    while j < nums.size
-      if nums[i] == nums[j]
-        return nums[i]
-      end
-      j += 1
+  return nums[0] if nums[0] == nums[1]
+
+  slow = nums[0]
+  quick = nums[0]
+
+  loop do
+    slow = nums[slow]
+    quick = nums[nums[quick]]
+
+    if slow == quick
+      break
     end
-    i += 1
   end
 end
 
-p find_duplicate([1,2,3,3])
+p find_duplicate([3,1,3,4,2])
