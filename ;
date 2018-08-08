@@ -1,0 +1,9 @@
+def predict_the_winner_r(nums, i, j, player, player_score_sum)
+end
+# @param {Integer[]} nums
+# @return {Boolean}
+def predict_the_winner(nums)
+  player_score_sum = [0, 0]
+  predict_the_winner_r(nums, 0, nums.size - 1, 0, player_score_sum)
+  player_score_sum[0] >= player_score_sum[1]
+end
